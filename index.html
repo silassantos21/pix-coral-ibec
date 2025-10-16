@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contribua</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    #qrcode {
+      margin: 20px auto;
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    #pix-code {
+      margin-top: 20px;
+      font-size: 0.9em;
+      background-color: #111;
+      border: 1px solid #444;
+      padding: 10px;
+      border-radius: 5px;
+      display: inline-block;
+      word-break: break-all;
+      max-width: 90%;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #00ff99;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background-color: #00cc7a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contribua</h1>
+
+  <div id="qrcode"></div>
+
+  <div id="pix-code"></div>
+  <button onclick="copiarPix()">Copiar código PIX</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const codigoPIX = "00020101021226900014BR.GOV.BCB.PIX2568pix-qr.mercadopago.com/instore/p/v2/8825ee48adee422b9638e4e7e3c28d1f43540016com.mercadolibre0130https://mpago.la/pos/1104391965204000053039865802BR5924IGREJA BATISTA EM CRISTO6009SAO PAULO62070503***6304DA58";
+
+    // Mostrar o código PIX na tela
+    document.getElementById("pix-code").textContent = codigoPIX;
+
+    // Gerar o QRCode
+    new QRCode(document.getElementById("qrcode"), {
+      text: codigoPIX,
+      width: 200,
+      height: 200,
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // Função para copiar o código
+    function copiarPix() {
+      navigator.clipboard.writeText(codigoPIX);
+      alert("Código PIX copiado!");
+    }
+  </script>
+</body>
+</html>
